@@ -5,7 +5,7 @@ import kotlin.math.sqrt
 fun main() {
     val a = "aabbbcddaa"
     val b = a.groupBy { it }
-    print(a)
+    print(divisibleSumPairs())
 }
 
 fun closestNumber(number: Int): Int {
@@ -335,4 +335,20 @@ fun findLongestString(): Int {
 fun cutTheSticks() {
     val a = arrayOf(1, 2, 3, 4, 3, 3, 2, 1)
 }
+
+// https://www.hackerrank.com/challenges/divisible-sum-pairs/
+fun divisibleSumPairs(): Int {
+    val ar = arrayOf(1, 3, 2, 6, 1, 2)
+    val k = 3
+    var count = 0
+    val n = 6
+    for(i in 0 until n-1) {
+        for(j in i+1 until n) {
+            if((ar[i] + ar[j])%k == 0)
+                count++
+        }
+    }
+    return count
+}
+
 
