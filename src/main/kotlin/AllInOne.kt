@@ -3,9 +3,7 @@ import kotlin.math.abs
 import kotlin.math.sqrt
 
 fun main() {
-    val a = "aabbbcddaa"
-    val b = a.groupBy { it }
-    print(divisibleSumPairs())
+    fizzBuzzWithCustomLogic()
 }
 
 fun closestNumber(number: Int): Int {
@@ -24,10 +22,20 @@ fun fizzBuzz() {
     }
 }
 
+fun fizzBuzzWithCustomLogic() {
+    for (i in 1..100) {
+        if (i%3 == 0) print("Fizz")
+        if (i%5 == 0) print("Buzz")
+        if (i%3 != 0 && i%5 != 0)
+            print(i)
+        println()
+    }
+}
+
 fun reverseArray(): Array<Int> {
     val a = arrayOf(1,3,4,5,6)
     val b = arrayOfNulls<Int>(a.size)
-    for(i in 0 until a.size) {
+    for(i in a.indices) {
         b[a.size-1-i] = a[i]
     }
     return a.reversedArray()
@@ -351,4 +359,25 @@ fun divisibleSumPairs(): Int {
     return count
 }
 
+// https://www.hackerrank.com/challenges/simple-array-sum/problem
+fun simpleArraySum(): Int {
+    val ar = arrayOf(1, 2, 3, 4, 5)
+    return ar.sum()
+}
 
+// https://www.hackerrank.com/challenges/lisa-workbook/
+fun timeConversion(time: String): String {
+    var result = ""
+    if (time.endsWith("PM")) {
+        val hours = (time.take(2).toInt() + 12).toString()
+        result = hours + time.slice(2..7)
+        if (result.startsWith("24"))
+            result = "12" + result.substring(2)
+    }
+    else
+        if (time.startsWith("12"))
+            result = "00" + time.slice(2..7)
+        else
+            result = time.slice(0..7)
+    return result
+}
